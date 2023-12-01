@@ -1,12 +1,82 @@
-type Request {
-	Name string `path:"name,options=you|me"`
-}
-
-type Response {
-	Message string `json:"message"`
-}
-
 service core-api {
-	@handler CoreHandler
-	get /from/:name(Request) returns (Response)
+	
+	@handler countryPriceMonth
+	post /country-price-month/query (CountryPriceMonthQueryReq) returns (CountryPriceMonthQueryResp)
+	
+	@handler countryProvincePrice
+	post /country-province-price/query (CountryProvincePriceQueryReq) returns (CountryProvincePriceQueryResp)
+	
+	@handler dataSource
+	post /data-source/query (DataSourceQueryReq) returns (DataSourceQueryResp)
+	
+	@handler provincePriceMonth
+	post /province-price-month/query (ProvincePriceMonthQueryReq) returns (ProvincePriceMonthQueryResp)
+	
+}
+
+type CountryPriceMonthQueryReq {
+	Page     int `json:"page"`
+	PageSize int `json:"pageSize"`
+}
+
+type CountryPriceMonthQueryResp {
+	Data []CountryPriceMonth `json:"data"`
+}
+
+type CountryPriceMonth {
+	Id               int     `json:"id"`
+	Day              string  `json:"day"`
+	Prediction_price float64 `json:"predictionPrice"`
+	Avg_price        float64 `json:"avgPrice"`
+}
+
+type CountryProvincePriceQueryReq {
+	Page     int `json:"page"`
+	PageSize int `json:"pageSize"`
+}
+
+type CountryProvincePriceQueryResp {
+	Data []CountryProvincePrice `json:"data"`
+}
+
+type CountryProvincePrice {
+	Id        int     `json:"id"`
+	Province  string  `json:"province"`
+	Avg_price float64 `json:"avgPrice"`
+}
+
+type DataSourceQueryReq {
+	Page     int `json:"page"`
+	PageSize int `json:"pageSize"`
+}
+
+type DataSourceQueryResp {
+	Data []*DataSource `json:"data"`
+}
+
+type DataSource {
+	Id           int     `json:"id"`
+	Day          string  `json:"day"`
+	Province     string  `json:"province"`
+	Address      string  `json:"address"`
+	Product_name string  `json:"productName"`
+	Category     string  `json:"category"`
+	Price        float64 `json:"price"`
+}
+
+type ProvincePriceMonthQueryReq {
+	Page     int `json:"page"`
+	PageSize int `json:"pageSize"`
+}
+
+type ProvincePriceMonthQueryResp {
+	Data []ProvincePriceMonth `json:"data"`
+}
+
+type ProvincePriceMonth {
+	Id               int     `json:"id"`
+	Province         string  `json:"province"`
+	Day              string  `json:"day"`
+	Prediction_price float64 `json:"predictionPrice"`
+	Avg_price        float64 `json:"avgPrice"`
 }

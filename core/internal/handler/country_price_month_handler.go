@@ -9,16 +9,16 @@ import (
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func CoreHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func countryPriceMonthHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.Request
+		var req types.CountryPriceMonthQueryReq
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 			return
 		}
 
-		l := logic.NewCoreLogic(r.Context(), svcCtx)
-		resp, err := l.Core(&req)
+		l := logic.NewCountryPriceMonthLogic(r.Context(), svcCtx)
+		resp, err := l.CountryPriceMonth(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {

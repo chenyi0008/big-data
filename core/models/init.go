@@ -1,11 +1,19 @@
 package models
 
-//func Init(dataSource string) *xorm.Engine {
-//	engine, err := xorm.NewEngine("mysql", dataSource)
-//	if err != nil {
-//		log.Printf("Xorm New Engine Error:%v", err)
-//		return nil
-//	}
-//
-//	return engine
-//}
+import (
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
+)
+
+func InitMysql(dataSource string) *gorm.DB {
+
+	db, err := gorm.Open(mysql.Open(dataSource), &gorm.Config{
+		Logger: logger.Default.LogMode(logger.Info), // 设置日志级别为 Info
+	})
+	if err != nil {
+		panic("failed to connect database")
+	}
+	return db
+
+}

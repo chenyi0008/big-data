@@ -2,39 +2,53 @@
 package types
 
 type CountryPriceMonthQueryReq struct {
-	Page     int `json:"page"`
-	PageSize int `json:"pageSize"`
+	Page            int     `json:"page"`
+	PageSize        int     `json:"pageSize"`
+	Id              int     `json:"id,default=0"`
+	Day             string  `json:"day,default=NULL"`
+	PredictionPrice float64 `json:"predictionPrice,default=0"`
+	AvgPrice        float64 `json:"avgPrice,default=0"`
 }
 
 type CountryPriceMonthQueryResp struct {
-	Data []CountryPriceMonth `json:"data"`
+	Data []*CountryPriceMonth `json:"data"`
 }
 
 type CountryPriceMonth struct {
 	Id               int     `json:"id"`
 	Day              string  `json:"day"`
 	Prediction_price float64 `json:"predictionPrice"`
-	Avg_price        float64 `json:"avgPrice"`
+	AvgPrice         float64 `json:"avgPrice"`
 }
 
 type CountryProvincePriceQueryReq struct {
-	Page     int `json:"page"`
-	PageSize int `json:"pageSize"`
+	Page     int     `json:"page"`
+	PageSize int     `json:"pageSize"`
+	Id       int     `json:"id,default=0"`
+	Province string  `json:"province,default=NULL"`
+	AvgPrice float64 `json:"avgPrice,default=0"`
 }
 
 type CountryProvincePriceQueryResp struct {
-	Data []CountryProvincePrice `json:"data"`
+	Data []*CountryProvincePrice `json:"data"`
 }
 
 type CountryProvincePrice struct {
-	Id        int     `json:"id"`
-	Province  string  `json:"province"`
-	Avg_price float64 `json:"avgPrice"`
+	Id       int     `json:"id"`
+	Province string  `json:"province"`
+	AvgPrice float64 `json:"avgPrice"`
 }
 
 type DataSourceQueryReq struct {
-	Page     int `json:"page"`
-	PageSize int `json:"pageSize"`
+	Page        int     `json:"page"`
+	PageSize    int     `json:"pageSize"`
+	Id          int     `json:"id,default=0"`
+	Day         string  `json:"day,default=NULL"`
+	Province    string  `json:"province,default=NULL"`
+	Address     string  `json:"address,default=NULL"`
+	ProductName string  `json:"productName,default=NULL"`
+	Category    string  `json:"category,default=NULL"`
+	Price       float64 `json:"price,default=0.0"`
 }
 
 type DataSourceQueryResp struct {
@@ -42,28 +56,33 @@ type DataSourceQueryResp struct {
 }
 
 type DataSource struct {
-	Id           int     `json:"id"`
-	Day          string  `json:"day"`
-	Province     string  `json:"province"`
-	Address      string  `json:"address"`
-	Product_name string  `json:"productName"`
-	Category     string  `json:"category"`
-	Price        float64 `json:"price"`
+	Id          int     `json:"id"`
+	Day         string  `json:"day"`
+	Province    string  `json:"province"`
+	Address     string  `json:"address"`
+	ProductName string  `json:"productName"`
+	Category    string  `json:"category"`
+	Price       float64 `json:"price"`
 }
 
 type ProvincePriceMonthQueryReq struct {
-	Page     int `json:"page"`
-	PageSize int `json:"pageSize"`
+	Page            int     `json:"page"`
+	PageSize        int     `json:"pageSize"`
+	Id              int     `json:"id,default=0"`
+	Province        string  `json:"province,default=NULL"`
+	Day             string  `json:"day,default=NULL"`
+	PredictionPrice float64 `json:"predictionPrice,default=0"`
+	AvgPrice        float64 `json:"avgPrice,default=0"`
 }
 
 type ProvincePriceMonthQueryResp struct {
-	Data []ProvincePriceMonth `json:"data"`
+	Data []*ProvincePriceMonth `json:"data"`
 }
 
 type ProvincePriceMonth struct {
-	Id               int     `json:"id"`
-	Province         string  `json:"province"`
-	Day              string  `json:"day"`
-	Prediction_price float64 `json:"predictionPrice"`
-	Avg_price        float64 `json:"avgPrice"`
+	Id              int     `json:"id"`
+	Province        string  `json:"province"`
+	Day             string  `json:"day"`
+	PredictionPrice float64 `json:"predictionPrice"`
+	AvgPrice        float64 `json:"avgPrice"`
 }

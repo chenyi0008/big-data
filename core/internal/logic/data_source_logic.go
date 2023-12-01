@@ -28,7 +28,29 @@ func (l *DataSourceLogic) DataSource(req *types.DataSourceQueryReq) (resp *types
 	// todo: add your logic here and delete this line
 	list := make([]*types.DataSource, 0)
 	offset := (req.Page - 1) * req.PageSize
-	err = l.svcCtx.DB.Table("data_source").Limit(req.PageSize).Offset(offset).Find(&list).Error
+	//条件查询
+
+	tx := l.svcCtx.DB.Table("data_source").Limit(req.PageSize).Offset(offset)
+	if req.Id != 0 {
+		tx = tx.Where("id = ?", req.Id)
+	}
+	if req.Address != "NULL" {
+		tx = tx.Where("address = ?", req.Address)
+	}
+	if req.Price != 0 {
+		tx = tx.Where("price = ?", req.Price)
+	}
+	if req.Category != "NULL" {
+		tx = tx.Where("category = ?", req.Category)
+	}
+	if req.Province != "NULL" {
+		tx = tx.Where("province = ?", req.Province)
+	}
+	if req.ProductName != "NULL" {
+		tx = tx.Where("product_name = ?", req.ProductName)
+	}
+	err = tx.Find(&list).Error
+
 	if err != nil {
 		panic(err)
 	}

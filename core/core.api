@@ -1,16 +1,19 @@
 service core-api {
 	
 	@handler countryPriceMonth
-	post /country-price-month/query (CountryPriceMonthQueryReq) returns (CountryPriceMonthQueryResp)
+	post /country-price-month (CountryPriceMonthQueryReq) returns (CountryPriceMonthQueryResp)
 	
 	@handler countryProvincePrice
-	post /country-province-price/query (CountryProvincePriceQueryReq) returns (CountryProvincePriceQueryResp)
+	post /country-province-price (CountryProvincePriceQueryReq) returns (CountryProvincePriceQueryResp)
 	
 	@handler dataSource
-	post /data-source/query (DataSourceQueryReq) returns (DataSourceQueryResp)
+	post /data-source (DataSourceQueryReq) returns (DataSourceQueryResp)
 	
 	@handler provincePriceMonth
-	post /province-price-month/query (ProvincePriceMonthQueryReq) returns (ProvincePriceMonthQueryResp)
+	post /province-price-month (ProvincePriceMonthQueryReq) returns (ProvincePriceMonthQueryResp)
+	
+	@handler Axis
+	get /axis (AxisQueryReq) returns (AxisQueryResp)
 	
 }
 
@@ -24,7 +27,8 @@ type CountryPriceMonthQueryReq {
 }
 
 type CountryPriceMonthQueryResp {
-	Data []*CountryPriceMonth `json:"data"`
+	IsSuccess bool                 `json:"isSuccess"`
+	Data      []*CountryPriceMonth `json:"data"`
 }
 
 type CountryPriceMonth {
@@ -43,7 +47,8 @@ type CountryProvincePriceQueryReq {
 }
 
 type CountryProvincePriceQueryResp {
-	Data []*CountryProvincePrice `json:"data"`
+	IsSuccess bool                    `json:"isSuccess"`
+	Data      []*CountryProvincePrice `json:"data"`
 }
 
 type CountryProvincePrice {
@@ -65,7 +70,8 @@ type DataSourceQueryReq {
 }
 
 type DataSourceQueryResp {
-	Data []*DataSource `json:"data"`
+	IsSuccess bool          `json:"isSuccess"`
+	Data      []*DataSource `json:"data"`
 }
 
 type DataSource {
@@ -89,7 +95,8 @@ type ProvincePriceMonthQueryReq {
 }
 
 type ProvincePriceMonthQueryResp {
-	Data []*ProvincePriceMonth `json:"data"`
+	IsSuccess bool                  `json:"isSuccess"`
+	Data      []*ProvincePriceMonth `json:"data"`
 }
 
 type ProvincePriceMonth {
@@ -98,4 +105,13 @@ type ProvincePriceMonth {
 	Day             string  `json:"day"`
 	PredictionPrice float64 `json:"predictionPrice"`
 	AvgPrice        float64 `json:"avgPrice"`
+}
+
+type AxisQueryReq {
+	Type string `form:"type"`
+}
+
+type AxisQueryResp {
+	IsSuccess bool      `json:"isSuccess"`
+	Data      []*string `json:"data"`
 }

@@ -56,7 +56,8 @@ func (l *DataSourceLogic) DataSource(req *types.DataSourceQueryReq) (resp *types
 	}
 	fmt.Println(list)
 	resp = &types.DataSourceQueryResp{
-		Data: list,
+		Data:      list,
+		IsSuccess: true,
 	}
 	return
 }

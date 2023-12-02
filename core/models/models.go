@@ -18,14 +18,6 @@ type CountryProvincePrice struct {
 }
 
 type DataSource struct {
-	//gorm.Model
-	//Day         string  `gorm:"type:varchar(15);"`
-	//Province    string  `gorm:"type:varchar(5);"`
-	//Address     string  `gorm:"type:varchar(15);"`
-	//ProductName string  `gorm:"type:varchar(15);"`
-	//Category    string  `gorm:"type:varchar(15);"`
-	//Price       float64 `gorm:"type:double;"`
-
 	Id          int     `json:"id"`
 	Day         string  `json:"day"`
 	Province    string  `json:"province"`

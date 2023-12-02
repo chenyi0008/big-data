@@ -11,7 +11,8 @@ type CountryPriceMonthQueryReq struct {
 }
 
 type CountryPriceMonthQueryResp struct {
-	Data []*CountryPriceMonth `json:"data"`
+	IsSuccess bool                 `json:"isSuccess"`
+	Data      []*CountryPriceMonth `json:"data"`
 }
 
 type CountryPriceMonth struct {
@@ -30,7 +31,8 @@ type CountryProvincePriceQueryReq struct {
 }
 
 type CountryProvincePriceQueryResp struct {
-	Data []*CountryProvincePrice `json:"data"`
+	IsSuccess bool                    `json:"isSuccess"`
+	Data      []*CountryProvincePrice `json:"data"`
 }
 
 type CountryProvincePrice struct {
@@ -52,7 +54,8 @@ type DataSourceQueryReq struct {
 }
 
 type DataSourceQueryResp struct {
-	Data []*DataSource `json:"data"`
+	IsSuccess bool          `json:"isSuccess"`
+	Data      []*DataSource `json:"data"`
 }
 
 type DataSource struct {
@@ -76,7 +79,8 @@ type ProvincePriceMonthQueryReq struct {
 }
 
 type ProvincePriceMonthQueryResp struct {
-	Data []*ProvincePriceMonth `json:"data"`
+	IsSuccess bool                  `json:"isSuccess"`
+	Data      []*ProvincePriceMonth `json:"data"`
 }
 
 type ProvincePriceMonth struct {
@@ -85,4 +89,13 @@ type ProvincePriceMonth struct {
 	Day             string  `json:"day"`
 	PredictionPrice float64 `json:"predictionPrice"`
 	AvgPrice        float64 `json:"avgPrice"`
+}
+
+type AxisQueryReq struct {
+	Type string `form:"type"`
+}
+
+type AxisQueryResp struct {
+	IsSuccess bool      `json:"isSuccess"`
+	Data      []*string `json:"data"`
 }

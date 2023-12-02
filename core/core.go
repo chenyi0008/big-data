@@ -14,9 +14,12 @@ import (
 
 var configFile = flag.String("f", "etc/core-api.yaml", "the config file")
 
+//var configFile = flag.String("f", "core-api.yaml", "the config file")
+
 func main() {
 	flag.Parse()
 
+	fmt.Printf("configFile:", *configFile)
 	var c config.Config
 	conf.MustLoad(*configFile, &c)
 

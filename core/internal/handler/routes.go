@@ -14,23 +14,28 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/country-price-month/query",
+				Path:    "/country-price-month",
 				Handler: countryPriceMonthHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/country-province-price/query",
+				Path:    "/country-province-price",
 				Handler: countryProvincePriceHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/data-source/query",
+				Path:    "/data-source",
 				Handler: dataSourceHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/province-price-month/query",
+				Path:    "/province-price-month",
 				Handler: provincePriceMonthHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/axis",
+				Handler: AxisHandler(serverCtx),
 			},
 		},
 	)

@@ -48,8 +48,8 @@ func (l *CountryProvincePriceLogic) CountryProvincePrice(req *types.CountryProvi
 	}
 	fmt.Println(list)
 	resp = &types.CountryProvincePriceQueryResp{
-		Data: list,
+		Data:      list,
+		IsSuccess: true,
 	}
-	return
 	return
 }

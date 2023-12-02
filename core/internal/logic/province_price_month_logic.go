@@ -54,7 +54,8 @@ func (l *ProvincePriceMonthLogic) ProvincePriceMonth(req *types.ProvincePriceMon
 	}
 	fmt.Println(list)
 	resp = &types.ProvincePriceMonthQueryResp{
-		Data: list,
+		Data:      list,
+		IsSuccess: true,
 	}
 	return
 

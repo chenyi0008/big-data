@@ -37,6 +37,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/axis",
 				Handler: AxisHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/test",
+				Handler: testHandler(serverCtx),
+			},
 		},
 	)
 }
